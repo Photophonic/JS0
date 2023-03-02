@@ -1,12 +1,19 @@
-const massMark = 78;
-const heightMark = 1.69;
+const age = 17;
+const drivingAge = 18;
 
-const massJohn = 92;
-const heightJohn = 188;
+if (age >= drivingAge) {
+  console.log("Old enough ");
+} else {
+  console.log("Not yet " + (drivingAge - age) + "years left");
+}
 
-let markBmi = massMark / (heightMark * heightMark);
-let johnBmi = massJohn / (heightJohn * heightJohn);
+const birthYear = 2021;
+let century;
 
-const markHigherBMI = markBmi > johnBmi;
+if (birthYear <= 2000) {
+  century = 20;
+} else {
+  century = 21;
+}
 
-console.log(markHigherBMI);
+console.log(`You were born in the ${century} century`);
