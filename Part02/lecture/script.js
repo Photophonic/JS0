@@ -18,6 +18,7 @@ if (mbmi > jbmi) {
 }
 */
 
+/*
 "use strict";
 
 function bmiCalc(mass, height) {
@@ -67,3 +68,31 @@ const toRetire = (birthYear) => {
 };
 
 console.log(toRetire(1980));
+
+function foodProcessor(fruit) {
+  return fruit * 4;
+}
+
+function juicer(item1, item2) {
+  let pieces1 = foodProcessor(item1);
+  let pieces2 = foodProcessor(item2);
+
+  return `Juice made with ${pieces1} apples and ${pieces2} oranges`;
+}
+*/
+
+function calcAge(birthYear) {
+  let year = new Date().getFullYear();
+  return year - birthYear;
+}
+
+const toRetire = function (birthYear) {
+  let age = calcAge(birthYear);
+  const retirement = 65 - age;
+
+  if (retirement > 0) {
+    return retirement;
+  } else {
+    return -1;
+  }
+};
