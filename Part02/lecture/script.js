@@ -95,7 +95,7 @@ const toRetire = function (birthYear) {
     return -1;
   }
 };
-*/
+
 
 function calcAverage(score1, score2, score3) {
   let scoreAverage = (score1 + score2 + score3) / 3;
@@ -118,3 +118,30 @@ let dolphins = calcAverage(85, 54, 41);
 let koalas = calcAverage(23, 34, 27);
 
 checkWinner(dolphins, koalas);
+*/
+
+//arrays
+const friends = ["Bob", "Dole", "Pete", "Joe"];
+
+//const years = new Array(1991, 1984, 2008, 2022);
+
+console.log(friends.length);
+
+console.log(friends[friends.length - 1]);
+
+friends[2] = "Smith";
+
+const person = ["Sam", 27, "Employed"];
+
+//Calc Age
+const calcAge = function (birthYear) {
+  let year = new Date().getFullYear();
+  return year - birthYear;
+  turn;
+};
+
+const years = [1990, 1967, 2002, 1932, 1968];
+
+for (i = 0; i < years.length; i++) {
+  console.log(calcAge(years[i]));
+}
