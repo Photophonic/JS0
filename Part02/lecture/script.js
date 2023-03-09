@@ -79,7 +79,6 @@ function juicer(item1, item2) {
 
   return `Juice made with ${pieces1} apples and ${pieces2} oranges`;
 }
-*/
 
 function calcAge(birthYear) {
   let year = new Date().getFullYear();
@@ -96,3 +95,26 @@ const toRetire = function (birthYear) {
     return -1;
   }
 };
+*/
+
+function calcAverage(score1, score2, score3) {
+  let scoreAverage = (score1 + score2 + score3) / 3;
+  console.log(scoreAverage);
+  return scoreAverage;
+}
+
+function checkWinner(avgTeam1, avgTeam2) {
+  if (avgTeam1 >= 2 * avgTeam2) {
+    console.log(`Dolphins win (${avgTeam1} vs. ${avgTeam2})`);
+  } else if (avgTeam2 >= 2 * avgTeam1) {
+    console.log(`Koalas win (${avgTeam2} vs. ${avgTeam1})`);
+  } else {
+    console.log("No winner ");
+  }
+}
+
+let dolphins = calcAverage(85, 54, 41);
+
+let koalas = calcAverage(23, 34, 27);
+
+checkWinner(dolphins, koalas);
