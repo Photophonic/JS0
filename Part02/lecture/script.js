@@ -120,6 +120,7 @@ let koalas = calcAverage(23, 34, 27);
 checkWinner(dolphins, koalas);
 */
 
+/*
 //arrays
 const friends = ["Bob", "Dole", "Pete", "Joe"];
 
@@ -145,3 +146,51 @@ const years = [1990, 1967, 2002, 1932, 1968];
 for (i = 0; i < years.length; i++) {
   console.log(calcAge(years[i]));
 }
+
+*/
+
+//array methods
+const friends = ["Bob", "Dole", "Pete", "Joe"];
+
+//moves soemthing to the end of the array
+friends.push("Paul");
+
+//Moves something to the front of the array
+friends.unshift("Bill");
+
+console.log(friends);
+
+//remove element from the end
+friends.pop();
+
+//remoevs element from the front of the array
+friends.shift("Bill");
+
+console.log(friends);
+
+//get element location from array
+console.log(friends.indexOf("Dole"));
+
+//true/false if array contains value
+console.log(friends.includes("Dole"));
+
+if (friends.includes("Bob")) {
+  console.log("You have a friend named Bob");
+}
+
+/*
+const tip = bill <= 300 && bill >= 50 ? bill * 0.15 : bill * 0.2;
+console.log(
+  `The bill was ${bill}, the tip was ${tip}, and the total value ${bill + tip}`
+);
+*/
+
+//array challenge
+const calcTip = function (bill) {
+  return bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.2;
+};
+
+const bills = [125, 544, 44];
+
+const tips = [calcTip(bills[0]), calcTip(bills[1]), calcTip(bills[2])];
+const total = [bills[0] + tips[0], bills[1] + tips[1], bills[2] + tips[2]];
