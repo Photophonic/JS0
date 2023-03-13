@@ -149,6 +149,7 @@ for (i = 0; i < years.length; i++) {
 
 */
 
+/*
 //array methods
 const friends = ["Bob", "Dole", "Pete", "Joe"];
 
@@ -178,6 +179,8 @@ if (friends.includes("Bob")) {
   console.log("You have a friend named Bob");
 }
 
+*/
+
 /*
 const tip = bill <= 300 && bill >= 50 ? bill * 0.15 : bill * 0.2;
 console.log(
@@ -185,6 +188,7 @@ console.log(
 );
 */
 
+/*
 //array challenge
 const calcTip = function (bill) {
   return bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.2;
@@ -194,3 +198,25 @@ const bills = [125, 544, 44];
 
 const tips = [calcTip(bills[0]), calcTip(bills[1]), calcTip(bills[2])];
 const total = [bills[0] + tips[0], bills[1] + tips[1], bills[2] + tips[2]];
+*/
+
+//objects with properties of the object in the {}
+const person = {
+  firstName: "Bob",
+  lastName: "Dole",
+  job: "Person",
+  age: new Date().getFullYear() - 1944,
+  //arrays should be used for more structured data, vs in object
+  friends: ["Bob", "John", "Pete", "Joe"],
+};
+
+//means to retreive info
+console.log(person.firstName);
+
+//using [] brackets allows for computation of property name
+console.log(person["lastName"]);
+
+const nameKey = "Name";
+
+console.log(person["first" + nameKey]);
+console.log(person["last" + nameKey]);
