@@ -200,6 +200,7 @@ const tips = [calcTip(bills[0]), calcTip(bills[1]), calcTip(bills[2])];
 const total = [bills[0] + tips[0], bills[1] + tips[1], bills[2] + tips[2]];
 */
 
+/*
 //objects with properties of the object in the {}
 const person = {
   firstName: "Bob",
@@ -207,7 +208,7 @@ const person = {
   job: "Person",
   age: new Date().getFullYear() - 1944,
   //arrays should be used for more structured data, vs in object
-  friends: ["Bob", "John", "Pete", "Joe"],
+  friends: ["Sam", "John", "Pete", "Joe"],
 };
 
 //means to retreive info
@@ -220,3 +221,48 @@ const nameKey = "Name";
 
 console.log(person["first" + nameKey]);
 console.log(person["last" + nameKey]);
+
+const interest = prompt("Ask me something about person?");
+
+person.location = "A place";
+
+person["socialMedia"] = "none@yup.com";
+
+//evaluates if output is true/false if it exists
+if (person[interest]) {
+  console.log(person[interest]);
+} else {
+  console.log("try again");
+}
+
+console.log(
+  `${person.firstName} has ${
+    person.friends.length
+  } friends and his best friend is ${[person.friends[0]]} `
+);
+*/
+
+const person = {
+  firstName: "Bob",
+  lastName: "Dole",
+  job: "person",
+  birthYear: 1974,
+  friends: ["Sam", "John", "Pete", "Joe"],
+  driversLicense: true,
+
+  /*calcAge: function (birthYear) {
+    const year = new Date().getFullYear();
+    return year - birthYear;
+  },*/
+
+  calcAge: function () {
+    const year = new Date().getFullYear();
+    return year - this.birthYear;
+  },
+
+  getSummary: function () {
+    return `${this.firstName} is a ${this.calcAge()} year old ${this.job} `;
+  },
+};
+
+console.log(person.getSummary());
