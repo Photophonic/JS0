@@ -265,4 +265,54 @@ const person = {
   },
 };
 
-console.log(person.getSummary());
+//console.log(person.getSummary());
+
+const myCountry = {
+  name: "United Staes",
+  population: 17000000,
+  capital: "Washington DC",
+  language: ["English", "Spanish"],
+  neighbors: ["Canada", "Mexico"],
+  isIsland: false,
+  describe: function () {
+    return `${this.name} has a population of ${this.population} people, ${this.language[0]} is the main language. There are ${this.neighbors.length} neighboring countries.`;
+  },
+  checkIsland: function () {
+    return this.neighbors.length > 0
+      ? (this.isIsland = false)
+      : (this.isIsland = true);
+  },
+};
+
+const person1 = {
+  name: "Mark",
+  mass: 78,
+  height: 1.68,
+  bmi: 0,
+  calcBMI: function () {
+    this.bmi = this.mass / this.height ** 2;
+    return this.bmi;
+    //console.log(this.bmi);
+  },
+};
+
+const person2 = {
+  name: "John",
+  mass: 92,
+  height: 1.95,
+  bmi: 0,
+  calcBMI: function () {
+    this.bmi = this.mass / this.height ** 2;
+    return this.bmi;
+    //console.log(this.bmi);
+  },
+};
+
+person1.calcBMI();
+person2.calcBMI();
+
+if (person1.bmi > person2.bmi) {
+  console.log(`${person1.bmi} is higher than ${person2.bmi}`);
+} else {
+  console.log(`${person2.bmi} is higher than ${person1.bmi}`);
+}
