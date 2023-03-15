@@ -242,6 +242,7 @@ console.log(
 );
 */
 
+/*
 const person = {
   firstName: "Bob",
   lastName: "Dole",
@@ -249,11 +250,6 @@ const person = {
   birthYear: 1974,
   friends: ["Sam", "John", "Pete", "Joe"],
   driversLicense: true,
-
-  /*calcAge: function (birthYear) {
-    const year = new Date().getFullYear();
-    return year - birthYear;
-  },*/
 
   calcAge: function () {
     const year = new Date().getFullYear();
@@ -315,4 +311,67 @@ if (person1.bmi > person2.bmi) {
   console.log(`${person1.bmi} is higher than ${person2.bmi}`);
 } else {
   console.log(`${person2.bmi} is higher than ${person1.bmi}`);
+}
+*/
+
+//loops
+
+/*
+for (i = 0; i < 10; i++) {
+  console.log(`lift weights rep ${i + 1}`);
+}
+*/
+
+const personArray = [
+  "Bob",
+  "Dole",
+  2023 - 1980,
+  "teacher",
+  ["Pete", "Bill", "Steve"],
+];
+
+//empty array
+const types = [];
+
+for (i = 0; i < personArray.length; i++) {
+  console.log(personArray[i]);
+  //filling an array
+  //types[i] = typeof personArray[i];
+  types.push(typeof personArray[i]);
+}
+
+for (i = 0; i < types.length; i++) {
+  console.log(types[i]);
+}
+
+const years = [1983, 1953, 1988, 1923];
+const age = [];
+
+//example of calculation and adding to a new array
+for (i = 0; i < years.length; i++) {
+  age.push(2023 - years[i]);
+}
+
+console.log(age);
+
+//continue(stops current itteration and continues loop)
+// & break (terminates the whole loop)
+console.log("Continue Statement");
+for (i = 0; i < personArray.length; i++) {
+  if (typeof personArray[i] !== "string") {
+    continue; //skips over the numbers and array.
+  } else {
+    //only log strings
+    console.log(personArray[i]);
+  }
+}
+
+console.log("Break Statement");
+for (i = 0; i < personArray.length; i++) {
+  if (typeof personArray[i] !== "string") {
+    break; //ends loop when not a string.
+  } else {
+    //only log strings
+    console.log(personArray[i]);
+  }
 }
