@@ -452,6 +452,7 @@ for (i = 0; i < years.length; i++) {
 // const tips = [calcTip(bills[0]), calcTip(bills[1]), calcTip(bills[2])];
 // const total = [bills[0] + tips[0], bills[1] + tips[1], bills[2] + tips[2]];
 
+/*
 const bills = [22, 295, 176, 440, 37, 105, 10, 1100, 86, 52];
 //const bills = [10, 10, 10];
 const tips = [];
@@ -478,3 +479,47 @@ const calcAvg = function (array) {
 };
 
 console.log(`Total average is ${calcAvg(totals)}`);
+*/
+
+const temp1 = [3, -1, -6, -1, "error", 9, 13, 17, 15, 14, 9, 5];
+const temp2 = [5, 2, 6, 8, 33, 1, 8, -1, 0, "error", "error"];
+//determin highest and lowest numbers in the array?
+//could be a sensor error
+//if an error is recevied, ignore it, then find max, then find min,
+//then subtract min from max and return the result.
+
+/*
+const calcTemp = function (tempArr) {
+  const max = Math.max(...tempArr);
+
+  const min = Math.min(...tempArr);
+
+  let result = [max, min];
+  return result;
+};
+
+console.log(calcTemp(temp));
+*/
+
+const calcTemp = function (temp1, temp2) {
+  let temps = temp1.concat(temp2);
+  let max = temps[0];
+  let min = temps[0];
+
+  //console.log(temps);
+  for (i = 0; i < temps.length; i++) {
+    const curTemp = temps[i];
+
+    if (typeof curTemp !== "number") continue;
+
+    if (curTemp > max) max = curTemp;
+
+    if (curTemp < min) min = curTemp;
+  }
+  console.log(max, min);
+  return max - min;
+};
+
+console.log(calcTemp(temp1, temp2));
+
+//now the function should take two arrays
