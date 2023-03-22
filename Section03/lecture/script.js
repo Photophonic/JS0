@@ -481,8 +481,8 @@ const calcAvg = function (array) {
 console.log(`Total average is ${calcAvg(totals)}`);
 */
 
-const temp1 = [3, -1, -6, -1, "error", 9, 13, 17, 15, 14, 9, 5];
-const temp2 = [5, 2, 6, 8, 33, 1, 8, -1, 0, "error", "error"];
+// const temp1 = [3, -1, -6, -1, "error", 9, 13, 17, 15, 14, 9, 5];
+// const temp2 = [5, 2, 6, 8, 33, 1, 8, -1, 0, "error", "error"];
 //determin highest and lowest numbers in the array?
 //could be a sensor error
 //if an error is recevied, ignore it, then find max, then find min,
@@ -501,6 +501,7 @@ const calcTemp = function (tempArr) {
 console.log(calcTemp(temp));
 */
 
+/*
 const calcTemp = function (temp1, temp2) {
   let temps = temp1.concat(temp2);
   let max = temps[0];
@@ -521,5 +522,21 @@ const calcTemp = function (temp1, temp2) {
 };
 
 console.log(calcTemp(temp1, temp2));
+*/
 
-//now the function should take two arrays
+//code challenge
+
+let temps = [17, 21, 23];
+let temps2 = [12, 5, -5, 0, 4];
+
+const printForecast = function (arr) {
+  let str = "";
+  for (i = 0; i < arr.length; i++) {
+    //console.log(`... ${arr[i]} in ${[i + 1]} day`);
+    str += ` ...${arr[i]}ºC in ${[i + 1]} days`;
+  }
+  console.log(str);
+};
+
+printForecast(temps);
+printForecast(temps2);
