@@ -1,0 +1,24 @@
+body {
+  background-color: rgb(252, 243, 232);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+}
+
+h1 {
+  font-size: 30px;
+}
+
+.firstParagraph {
+  font-size: 25px;
+  color: #f35656;
+}
+
+#courseImage {
+  width: 20rem;
+  border: 2px solid black;
+}
+
+#entryForm {
+  background-color: #f3ff85;
+  border: 5px dashed blue;
+}
