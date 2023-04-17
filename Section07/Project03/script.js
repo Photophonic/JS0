@@ -29,6 +29,20 @@ score1.textContent = 0;
 currentScore0.textContent = 0;
 currentScore1.textContent = 0;
 
+//create function to switch players so it can be repeated in code
+const switchPlayer = function () {
+  currentScore = 0;
+  document.getElementById(`current--${activePlayer}`).textContent =
+    currentScore;
+
+  //switch to next player using ternary (like a decode in SQL)
+  activePlayer = activePlayer === 0 ? 1 : 0;
+
+  //switch active players with CSS class
+  player0.classList.toggle('player--active');
+  player1.classList.toggle('player--active');
+};
+
 //remember, don't use . before the class name for add/removeq
 dice.classList.add('hidden');
 
@@ -48,16 +62,36 @@ rollDice.addEventListener('click', function () {
     document.getElementById(`current--${activePlayer}`).textContent =
       currentScore;
   } else {
-    //reset scores to 0
-    currentScore = 0;
-    document.getElementById(`current--${activePlayer}`).textContent =
-      currentScore;
+    switchPlayer();
+  }
+});
 
-    //switch to next player using ternary (like a decode in SQL)
-    activePlayer = activePlayer === 0 ? 1 : 0;
+hold.addEventListener('click', function () {
+  //1. add current score to active player score.
+  //use scores array for tracking stored scores for either player (0/1)
+  scores[activePlayer] += currentScore;
+  console.log(scores[activePlayer]);
+  //update player held score using same process as above.
+  document.getElementById(`score--${activePlayer}`).textContent =
+    scores[activePlayer];
+  //2. check if score >= 100
+  if (scores[activePlayer] >= 5) {
+    // document
+    //   .querySelector(`.player--${activePlayer}`)
+    //   .classList.add('player--winner');
+    // document
+    //   .querySelector(`.player--${activePlayer}`)
+    //   .classList.remove('player--active');
 
-    //switch active players with CSS class
-    player0.classList.toggle('player--active');
-    player1.classList.toggle('player--active');
+    document
+      .querySelector(`.player--${activePlayer}`)
+      .classList.add('player--winner');
+
+    document
+      .querySelector(`.player--${activePlayer}`)
+      .classList.remove('player--active');
+  } else {
+    //3. If not switch to next player
+    switchPlayer();
   }
 });
