@@ -26,4 +26,94 @@ const restaurant = {
       close: 24,
     },
   },
+
+  order: function (starterIndex, mainIndex) {
+    return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
+  },
+
+  //feed in an object as the single parameter, along with default values
+  orderDelivery: function ({
+    starterIndex = 1,
+    mainIndex = 0,
+    time = '20:00',
+    addess,
+  }) {
+    console.log(
+      this.starterMenu[starterIndex],
+      this.mainMenu[mainIndex],
+      time,
+      addess
+    );
+  },
 };
+
+restaurant.orderDelivery({
+  time: '22:30',
+  addess: '111 South Cherry',
+  mainIndex: 2,
+  starterIndex: 1,
+});
+
+//Object Destructure
+//will create three new variables based on the restaurant object
+const { name, openingHours, categories } = restaurant;
+
+//This will allow you to set the names for the new variables
+const {
+  name: restaurantName,
+  openingHours: hours,
+  categories: tags,
+} = restaurant;
+
+//set default values and names for object
+const { menu = [], starterMenu: starters = [] } = restaurant;
+
+//mutating variables in objects
+let a = 111;
+let b = 999;
+
+const obj = { a: 23, b: 7, c: 14 };
+
+//Using () allows you to assign to existing variables
+({ a, b } = obj);
+
+//nested objects
+const {
+  fri: { open, close },
+} = openingHours;
+
+// Destructuring Arrays
+// const arr = [2, 3, 4];
+
+// const a = arr[0];
+// const b = arr[1];
+// const c = arr[2];
+
+// //destructuring array on the right (arr)
+// const [x, y, z] = arr;
+
+// //willl only pull the first two items from this group.
+// const [first, second] = restaurant.categories;
+
+// //this will skip the second item in the list
+// let [main, , secondary] = restaurant.categories;
+
+// //to switch variables the long way.
+// // const temp = main;
+// // main = secondary;
+// // secondary = temp;
+
+// //using destruct array to swap around
+// [main, secondary] = [secondary, main];
+
+// //assign the return values from the object's method to variables.
+// const [starter, mainMeal] = restaurant.order(2, 0);
+
+// console.log(starter, mainMeal);
+
+// //example of how to capture variables in nested arrays
+// const nested = [2, 4, [5, 6]];
+// const [i, , [j, k]] = nested;
+
+// //default values in the event you're unsure of length
+// const [p = 1, q = 1, r = 1] = [8, 9];
