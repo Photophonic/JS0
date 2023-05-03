@@ -45,42 +45,149 @@ const restaurant = {
       addess
     );
   },
+
+  orderPasta: function (item1, item2, item3) {
+    console.log('Food ' + item1, item2, item3);
+  },
 };
 
-restaurant.orderDelivery({
-  time: '22:30',
-  addess: '111 South Cherry',
-  mainIndex: 2,
-  starterIndex: 1,
-});
+const food1 = {
+  name: 'Pizza House',
+  //numGuest: 20,
+  numGuest: 0,
+};
 
-//Object Destructure
-//will create three new variables based on the restaurant object
-const { name, openingHours, categories } = restaurant;
+const food2 = {
+  name: 'Pizza Shack',
+  owner: 'Bob Dole',
+};
 
-//This will allow you to set the names for the new variables
-const {
-  name: restaurantName,
-  openingHours: hours,
-  categories: tags,
-} = restaurant;
+//assign a default value based on value from the first one if true else 10.
+// food1.numGuest = food1.numGuest || 10;
+// food2.numGuest = food1.numGuest || 10;
 
-//set default values and names for object
-const { menu = [], starterMenu: starters = [] } = restaurant;
+//Or assignment operator
+food1.numGuest ||= 10;
+food2.numGuest ||= 10;
 
-//mutating variables in objects
-let a = 111;
-let b = 999;
+food1.numGuest ??= 10;
+food2.numGuest ??= 10;
+console.log(food1.numGuest, food2.numGuest);
 
-const obj = { a: 23, b: 7, c: 14 };
+//AND will reutnr first falsy
+food1.owner = food1.owner && 'NAME';
+food2.owner = food2.owner && 'NAME';
 
-//Using () allows you to assign to existing variables
-({ a, b } = obj);
+food1.owner &&= 'NAME';
+food2.owner &&= 'NAME';
 
-//nested objects
-const {
-  fri: { open, close },
-} = openingHours;
+console.log(food1.owner, food2.owner);
+
+// restaurant.numGuests = 0;
+
+// //short curcuit
+// //and
+// const guest1 = restaurant.numGuests ? restaurant.numGuests : 10;
+// console.log(guest1);
+// //or
+// const guest2 = restaurant.numGuests || 10;
+// console.log(guest2);
+
+// //Nullish
+// //works around the idea of null or undifined values instead of falsy
+// const guest3 = restaurant.numGuests ?? 10;
+// console.log(guest3);
+
+// //Rest to pack items into an array
+// const arr = [7, 8, 9];
+// // using spread
+// const newArr = [1, 2, ...arr];
+
+// //Using Rest assignes the elements to the ...X array
+// const [a, b, ...others] = [1, 2, 3, 4, 5];
+
+// //combining rest and spread and skipping an item
+// const [c, , d, ...men] = [...restaurant.mainMenu, ...restaurant.starterMenu];
+
+// //function example with rest parameters
+// const add = function (...numbers) {
+//   let sum = 0;
+//   for (let i = 0; i < numbers.length; i++) {
+//     sum += numbers[i];
+//   }
+
+//   return sum;
+// };
+
+// //Using Spread Operator, used to unpack arrays and objects
+// const arr = [7, 8, 9];
+
+// //don't do this to assign arr to the new array
+// const badArr = [1, 2, arr[0], arr[1], arr[2]];
+
+// //this is the proper way to create a new array and add arr.
+// const goodArr = [1, 2, ...arr];
+// console.log(goodArr);
+
+// const newMenu = [...restaurant.mainMenu, 'Tacos'];
+
+// console.log(newMenu);
+
+// //copy array
+// const mainMenuCopy = [...restaurant.mainMenu];
+
+// //to join two arrays
+// const joinedMenu = [...restaurant.mainMenu, ...restaurant.starterMenu];
+// console.log(joinedMenu);
+
+// const str = 'BobDole';
+// const letters = [...str];
+// console.log(letters);
+
+// const ingredients = ['food 1', 'food 2', 'food 3'];
+
+// restaurant.orderPasta(...ingredients);
+
+// //to copy Onjects, changes to the copy do not modify the original
+// const restaurantCopy = { ...restaurant };
+// restaurantCopy.name = 'Yummy Place';
+
+// console.log(restaurantCopy.name, restaurant.name);
+
+// //Object Destructure
+// //will create three new variables based on the restaurant object
+// const { name, openingHours, categories } = restaurant;
+
+// restaurant.orderDelivery({
+//   time: '22:30',
+//   addess: '111 South Cherry',
+//   mainIndex: 2,
+//   starterIndex: 1,
+// });
+
+// //This will allow you to set the names for the new variables
+// const {
+//   name: restaurantName,
+//   openingHours: hours,
+//   categories: tags,
+// } = restaurant;
+
+// //set default values and names for object
+// const { menu = [], starterMenu: starters = [] } = restaurant;
+
+// //mutating variables in objects
+// let a = 111;
+// let b = 999;
+
+// const obj = { a: 23, b: 7, c: 14 };
+
+// //Using () allows you to assign to existing variables
+// ({ a, b } = obj);
+
+// //nested objects
+// const {
+//   fri: { open, close },
+// } = openingHours;
 
 // Destructuring Arrays
 // const arr = [2, 3, 4];
