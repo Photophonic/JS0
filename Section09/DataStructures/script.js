@@ -4,6 +4,24 @@
 const flights =
   '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
 
+const days = ['Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun'];
+//Object Literals
+const openingHours = {
+  //Can compute the variable name vs typing. Use array position for Thur
+  [days[3]]: {
+    open: 12,
+    close: 22,
+  },
+  [days[4]]: {
+    open: 11,
+    close: 23,
+  },
+  [days[5]]: {
+    open: 0, // Open 24 hours
+    close: 24,
+  },
+};
+
 // Data needed for first part of the section
 const restaurant = {
   name: 'Classico Italiano',
@@ -12,22 +30,11 @@ const restaurant = {
   starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
   mainMenu: ['Pizza', 'Pasta', 'Risotto'],
 
-  openingHours: {
-    thu: {
-      open: 12,
-      close: 22,
-    },
-    fri: {
-      open: 11,
-      close: 23,
-    },
-    sat: {
-      open: 0, // Open 24 hours
-      close: 24,
-    },
-  },
+  //ES6 enhanced object literals. Can simply add another object
+  openingHours,
 
-  order: function (starterIndex, mainIndex) {
+  //ES6 enhanced methods for functionsin objects. Remove the function and :
+  order(starterIndex, mainIndex) {
     return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
   },
 
@@ -51,37 +58,76 @@ const restaurant = {
   },
 };
 
-const food1 = {
-  name: 'Pizza House',
-  //numGuest: 20,
-  numGuest: 0,
-};
+// Optional Chaining
+// This throws an error since Monday is not defined.
+// console.log(restaurant.openingHours.mon.open);
 
-const food2 = {
-  name: 'Pizza Shack',
-  owner: 'Bob Dole',
-};
+// Chaining ?. will check if the property to the right of the question mark exists.
+console.log(restaurant.openingHours.mon?.open);
+console.log(restaurant.openingHours.mon?.close);
+//multiple chains, will evaluate each item along the chain
+console.log(restaurant.openingHours?.mon?.close);
 
-//assign a default value based on value from the first one if true else 10.
-// food1.numGuest = food1.numGuest || 10;
-// food2.numGuest = food1.numGuest || 10;
+for (const day of days) {
+  const open = restaurant.openingHours[day]?.open ?? 'closed';
+  console.log(day, open);
+}
 
-//Or assignment operator
-food1.numGuest ||= 10;
-food2.numGuest ||= 10;
+//methods, check to see if the method exists
+console.log(restaurant.order?.(0, 1) ?? 'Method does not exist');
 
-food1.numGuest ??= 10;
-food2.numGuest ??= 10;
-console.log(food1.numGuest, food2.numGuest);
+// //Looping Arrays
+// //using spread to unpack the array into a new array
+// const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+// //using the new for of loop with array. Useful to get current element, not index.
+// for (const item of menu) {
+//   console.log(item);
+// }
 
-//AND will reutnr first falsy
-food1.owner = food1.owner && 'NAME';
-food2.owner = food2.owner && 'NAME';
+// //to get the index of an item. Use the entries method on the array.
+// for (const item of menu.entries()) {
+//   console.log(item);
+// }
 
-food1.owner &&= 'NAME';
-food2.owner &&= 'NAME';
+// //to see the entries method on the array.
+// console.log(menu.entries());
 
-console.log(food1.owner, food2.owner);
+// // using destructuring to get the index and array item.
+// for (const [i, el] of menu.entries()) {
+//   console.log(i, el);
+// }
+
+// const food1 = {
+//   name: 'Pizza House',
+//   //numGuest: 20,
+//   numGuest: 0,
+// };
+
+// const food2 = {
+//   name: 'Pizza Shack',
+//   owner: 'Bob Dole',
+// };
+
+// //assign a default value based on value from the first one if true else 10.
+// // food1.numGuest = food1.numGuest || 10;
+// // food2.numGuest = food1.numGuest || 10;
+
+// //Or assignment operator
+// food1.numGuest ||= 10;
+// food2.numGuest ||= 10;
+
+// food1.numGuest ??= 10;
+// food2.numGuest ??= 10;
+// console.log(food1.numGuest, food2.numGuest);
+
+// //AND will reutnr first falsy
+// food1.owner = food1.owner && 'NAME';
+// food2.owner = food2.owner && 'NAME';
+
+// food1.owner &&= 'NAME';
+// food2.owner &&= 'NAME';
+
+// console.log(food1.owner, food2.owner);
 
 // restaurant.numGuests = 0;
 
