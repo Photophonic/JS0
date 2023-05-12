@@ -52,7 +52,40 @@ const createBooking = function (
 };
 
 //call funcation to push the information to the array
-createBooking('LH123', 5);
+//createBooking('LH123', 5);
 
 //cannot skip parameters, but can manually set to undefined will load defaults
-createBooking('2J374', undefined, 88);
+//createBooking('2J374', undefined, 88);
+
+//video 129 Passing Arguments
+const flight = 'LH2';
+const passenger = {
+  name: 'Bod Dole',
+  passport: 83277181,
+};
+
+const checkIn = function (flightNum, passenger) {
+  flightNum = 'LH999';
+  passenger.name = 'Mr. ' + passenger.name;
+
+  if (passenger.passport === 83277181) {
+    console.log('Check In ' + flightNum);
+  } else {
+    console.log('Wrong Passport');
+  }
+};
+
+checkIn(flight, passenger);
+console.log(flight);
+console.log(passenger);
+
+const newPassport = function (person) {
+  person.passport = Math.trunc(Math.random() * 100000000);
+};
+
+newPassport(passenger);
+
+console.log(passenger);
+
+checkIn(flight, passenger);
+console.log(passenger);
