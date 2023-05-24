@@ -16,6 +16,21 @@ const restaurant = {
     return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
   },
 
+  // using an object as the argument, att the {} and variable names to
+  // destructure the object on the spot to the new variables for the function
+  // use = ITEM to set defaults on the inbound.
+  orderDelivery: function ({
+    starterIndex = 1,
+    mainIndex = 0,
+    time = '20:00',
+    address = '100 place',
+  }) {
+    console.log(
+      // calls THIS starterMenu and uses the number as the array index
+      `Order received: ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`
+    );
+  },
+
   openingHours: {
     thu: {
       open: 12,
@@ -33,6 +48,8 @@ const restaurant = {
 };
 
 //Video 103 destructuring arrays
+//to destructure arrays use [] braces
+
 //without destructuring
 const arr = [2, 3, 4];
 const a = arr[0];
@@ -40,7 +57,7 @@ const b = arr[1];
 const c = arr[2];
 console.log('previous ', a, b, c);
 
-//with destructuring (unpacking)
+//with destructuring (unpacking) create variables from the array positions.
 const [x, y, z] = arr;
 console.log('destuctured ', x, y, z);
 
@@ -71,3 +88,51 @@ const [p = 1, q = 1, r = 1] = defaultArr;
 console.log(p, q, r);
 
 //video 104 destructing objects
+//to destructure objects, use the {} braces and specify the properties as new variables
+const { name, categories, openingHours } = restaurant;
+
+//To name our own variable names from existing properties.
+const {
+  name: restaurantName,
+  openingHours: hours,
+  categories: tags,
+} = restaurant;
+
+//to set default variables when properties might not exist from the object
+//can be combined with rename option too (starters)
+const { menu = [], starterMenu: starters = [] } = restaurant;
+console.log(menu, starters);
+
+//mutating variables for objects
+let aa = 111;
+let bb = 999;
+console.log('Original ', aa, bb);
+const obj = { aa: 23, bb: 7, cc: 14 };
+
+// to mutate existing variables from an object, wrap it in ()
+({ aa, bb } = obj);
+
+console.log('mutated ', aa, bb);
+
+// nested object destructuring. Target the main object, then the nested opbject
+const {
+  fri: { open, close },
+} = restaurant.openingHours;
+console.log('open ', open, 'close ', close);
+
+// calling the function in the object, and passing an object into the arguments
+// see restaurant.orderDelivery() above.
+restaurant.orderDelivery({
+  time: '22:30',
+  address: '111 South Cherry',
+  mainIndex: 2,
+  starterIndex: 2,
+});
+
+//using default values within the object function
+restaurant.orderDelivery({
+  mainIndex: 2,
+  starterIndex: 2,
+});
+
+//video 105 spread operator
