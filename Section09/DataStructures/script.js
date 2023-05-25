@@ -31,6 +31,10 @@ const restaurant = {
     );
   },
 
+  orderPasta: function (ing1, ing2, ing3) {
+    console.log(`Here is your order ${ing1}, ${ing2}, ${ing3}`);
+  },
+
   openingHours: {
     thu: {
       open: 12,
@@ -129,10 +133,60 @@ restaurant.orderDelivery({
   starterIndex: 2,
 });
 
-//using default values within the object function
+// using default values within the object function
 restaurant.orderDelivery({
   mainIndex: 2,
   starterIndex: 2,
 });
 
-//video 105 spread operator
+// video 105 spread operator
+
+// old way without spread
+const arrr = [7, 8, 9];
+const oldWay = [1, 2, arr[0], arr[1], arr[2]];
+console.log(oldWay);
+
+// array with spread operator.
+// make a new array, then when using old array, spread with ...arrayName
+// this will unpack the array into the new array's positions
+const newWay = [1, 2, ...arrr];
+console.log('Spread ', newWay);
+
+// spread can be used to output the individual elements of the array
+console.log(...newWay);
+
+// to create a new array with new values of an existing array.
+const newMenu = [...restaurant.mainMenu, 'Toast', 'Pop-Tarts'];
+console.log(...newMenu);
+
+// the spread operator is similar to destrcuturing but does not create variables.
+// can only be user where values are separated by commas.
+
+// copy array
+const mainMenuCopy = [...restaurant.mainMenu];
+console.log(...mainMenuCopy);
+
+// to join multiple arrays.
+const joinMenu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+console.log(...joinMenu);
+
+// the spead operator works on iterable items. Arrays, strings, maps, sets
+// DOES NOT WORK ON OBJECTS!!!
+const str = 'Bob Dole';
+const letters = [...str, '', 's.'];
+console.log(letters);
+
+// create a new array with elemets
+const ingredients = ['food', 'food2', 'food3'];
+// then call the method in the object to pass in the array elements
+restaurant.orderPasta(...ingredients);
+
+// Create a new object using the {} then add new methods to the object
+const newRestaurant = { ...restaurant, found: 'Bod Dole', foundedYear: 1998 };
+console.log(newRestaurant);
+
+// to copy the new object. Remember, {} not []
+const restaurantCopy = { ...newRestaurant };
+// rename the place in the copy
+restaurantCopy.name = 'ShowBizz Pizza';
+console.log(restaurantCopy);
