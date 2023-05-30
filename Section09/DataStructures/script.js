@@ -35,6 +35,11 @@ const restaurant = {
     console.log(`Here is your order ${ing1}, ${ing2}, ${ing3}`);
   },
 
+  orderPizza: function (mainIngredient, ...otherIngredients) {
+    console.log(mainIngredient);
+    console.log(otherIngredients);
+  },
+
   openingHours: {
     thu: {
       open: 12,
@@ -140,6 +145,7 @@ restaurant.orderDelivery({
 });
 
 // video 105 spread operator
+// used to unpack elemts from an array into variables
 
 // old way without spread
 const arrr = [7, 8, 9];
@@ -190,3 +196,52 @@ const restaurantCopy = { ...newRestaurant };
 // rename the place in the copy
 restaurantCopy.name = 'ShowBizz Pizza';
 console.log(restaurantCopy);
+
+// video 106 rest pattern
+// rest pattern is similar to the spread. Used to pack elements into an array
+
+// spread operator
+const testArr = [1, 2, 3, 4, 5];
+// spread is on the right of assignments
+const spread = ['a', 'b', ...testArr];
+
+// rest operator is on the left side of assignments
+const [xx, yy, ...others] = spread;
+// this assigned 'a' to xx. 'b', to yy, the remainign parts of spread to others array
+console.log(xx, yy, others);
+// a b (5) [1, 2, 3, 4, 5]
+
+// using rest and spread operators
+// create new variables pizza, risotto, new array named otherFood
+// then destructure the main and side menu arrays
+const [pizza, , risotto, ...otherFood] = [
+  ...restaurant.mainMenu,
+  ...restaurant.starterMenu,
+];
+console.log(pizza, risotto, otherFood);
+
+// Rest operator with Objects
+const { sat, ...weekdays } = restaurant.openingHours;
+console.log(sat, weekdays);
+
+// functions with spread operator
+const add = function (...numbers) {
+  let sum = 0;
+  for (let i = 0; i < numbers.length; i++) {
+    sum += numbers[i];
+  }
+
+  return sum;
+};
+
+console.log(add(2, 3));
+console.log(add(5, 3, 6, 2));
+
+const rr = [...testArr];
+
+console.log(add(...rr));
+
+// create method in main object. Will create variable of main item, then rest array
+restaurant.orderPizza('Pineapple', 'Sauce', 'Cheese', 'stuff');
+
+restaurant.orderPizza('Cheese');
