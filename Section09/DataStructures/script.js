@@ -11,7 +11,10 @@ const restaurant = {
   categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
   starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
   mainMenu: ['Pizza', 'Pasta', 'Risotto'],
-
+  superMenu: [
+    ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
+    ['Pizza', 'Pasta', 'Risotto'],
+  ],
   order: function (starterIndex, mainIndex) {
     return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
   },
@@ -74,6 +77,9 @@ console.log('destuctured ', x, y, z);
 const [first, , third] = restaurant.categories;
 
 console.log(first, third);
+
+// using destructuring in embededded array
+const [sMenu, mMenu] = restaurant.superMenu;
 
 //to swtich order of categories, swap the order of declare variables
 const [secondary, , main] = restaurant.categories;
@@ -245,3 +251,41 @@ console.log(add(...rr));
 restaurant.orderPizza('Pineapple', 'Sauce', 'Cheese', 'stuff');
 
 restaurant.orderPizza('Cheese');
+
+// 108 nullish, if the first value null or undefined, return the second
+const guestCorrect = restaurant.numGuests ?? 50;
+console.log(guestCorrect);
+
+// 109 logical assignment opperators
+const rest1 = {
+  name: 'food place',
+  numGuests: 20,
+};
+
+const rest2 = {
+  name: 'food bard',
+  owner: 'Bob Dole',
+};
+
+// using the OR operator, truthy eval - return first item if exists.
+// rest2.numGuests = rest2.numGuests || 10;
+// console.log(rest2.numGuests);
+
+// rest2.numGuests = rest1.numGuests || 10;
+// console.log(rest2.numGuests);
+
+// using the logical assignment operator
+// this will assign a value if the value is falsy
+rest1.numGuests ||= 10;
+rest2.numGuests ||= 10;
+
+// the logical nullish variant
+rest1.numGuests ??= 10;
+rest2.numGuests ??= 10;
+
+console.log(rest2.numGuests);
+
+// using the && operator will cause the second option to be selected
+rest2.owner = rest2.owner && '<ANONYMOUS>';
+
+// 111 Looping Arrays - for-of-loop
