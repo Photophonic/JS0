@@ -4,6 +4,22 @@
 const flights =
   '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
 
+const weekdays = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+const openingHours = {
+  [weekdays[3]]: {
+    open: 12,
+    close: 22,
+  },
+  [weekdays[4]]: {
+    open: 11,
+    close: 23,
+  },
+  [weekdays[5]]: {
+    open: 0, // Open 24 hours
+    close: 24,
+  },
+};
+
 // Data needed for first part of the section
 const restaurant = {
   name: 'Classico Italiano',
@@ -19,6 +35,12 @@ const restaurant = {
     return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
   },
 
+  // Enhanced object literals can be called directly.
+  // object openingHours is above, and now part of this object
+  // openingHours,
+
+  // ES6 enhanced object literals
+  openingHours,
   // using an object as the argument, att the {} and variable names to
   // destructure the object on the spot to the new variables for the function
   // use = ITEM to set defaults on the inbound.
@@ -34,28 +56,15 @@ const restaurant = {
     );
   },
 
-  orderPasta: function (ing1, ing2, ing3) {
+  // Enhance functions drop the function key word
+  orderPasta(ing1, ing2, ing3) {
     console.log(`Here is your order ${ing1}, ${ing2}, ${ing3}`);
   },
 
+  // standard function calls in an object
   orderPizza: function (mainIngredient, ...otherIngredients) {
     console.log(mainIngredient);
     console.log(otherIngredients);
-  },
-
-  openingHours: {
-    thu: {
-      open: 12,
-      close: 22,
-    },
-    fri: {
-      open: 11,
-      close: 23,
-    },
-    sat: {
-      open: 0, // Open 24 hours
-      close: 24,
-    },
   },
 };
 
@@ -104,7 +113,7 @@ console.log(p, q, r);
 
 //video 104 destructing objects
 //to destructure objects, use the {} braces and specify the properties as new variables
-const { name, categories, openingHours } = restaurant;
+const { name, categories, openingHourz } = restaurant;
 
 //To name our own variable names from existing properties.
 const {
@@ -130,10 +139,10 @@ const obj = { aa: 23, bb: 7, cc: 14 };
 console.log('mutated ', aa, bb);
 
 // nested object destructuring. Target the main object, then the nested opbject
-const {
-  fri: { open, close },
-} = restaurant.openingHours;
-console.log('open ', open, 'close ', close);
+// const {
+//   fri: { open, close },
+// } = restaurant.openingHours;
+// console.log('open ', open, 'close ', close);
 
 // calling the function in the object, and passing an object into the arguments
 // see restaurant.orderDelivery() above.
@@ -227,8 +236,8 @@ const [pizza, , risotto, ...otherFood] = [
 console.log(pizza, risotto, otherFood);
 
 // Rest operator with Objects
-const { sat, ...weekdays } = restaurant.openingHours;
-console.log(sat, weekdays);
+const { sat, ...weekday } = restaurant.openingHours;
+console.log(sat, weekday);
 
 // functions with spread operator
 const add = function (...numbers) {
@@ -289,3 +298,84 @@ console.log(rest2.numGuests);
 rest2.owner = rest2.owner && '<ANONYMOUS>';
 
 // 111 Looping Arrays - for-of-loop
+// using a standard for loop
+const oldMenu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+for (let i = 0; i < oldMenu.length; i++) {
+  console.log([i], oldMenu[i]);
+}
+
+// for-of loop
+for (const i of oldMenu) console.log(i);
+
+// to get the element of the array, use the entries method.
+for (const i of oldMenu.entries()) {
+  console.log(i);
+}
+
+// to destructure the array to get the position and element
+for (const [el, i] of oldMenu.entries()) {
+  console.log(el, i);
+}
+
+// 112 Enhance Object Literals
+// much of the code for this is above in the object
+
+// 113 optional object chaining, if an object does not exist, undefined is returned
+console.log(restaurant?.openingHours);
+
+// 114 looping objects, keys, and values
+// to view the properties of this. ALlos us to see how long hte thing is
+const properties = Object.keys(openingHours);
+console.log(properties);
+
+console.log(`We are open on ${properties.length} days`);
+
+// looping over the KEYS
+for (const day of Object.keys(openingHours)) {
+  console.log(day);
+}
+
+// to loop over the VALUES of the object
+const value = Object.values(openingHours);
+// returns the open/close of the days of week
+console.log(value);
+
+for (const day of Object.values(openingHours)) {
+  console.log(day);
+}
+
+// to loop over the ENTRIES of the object, this is the entire object
+const entries = Object.entries(openingHours);
+console.log(entries);
+
+// to loop over the contents of the object:
+// first value is the key, then the next value is an object itself.
+// use additional destructuring to get the values of the object
+// then they can be inserted into the variables
+for (const [key, { open, close }] of entries) {
+  console.log(`On ${key} we are open at ${open} and close at ${close}`);
+}
+
+// An additional example to make it easier to visualize.
+const person = {
+  firstName: 'Arunesh',
+  lastName: 'kumar',
+  birthYear: 1999,
+};
+
+console.log(person);
+
+// get all keys
+for (const key of Object.keys(person)) {
+  console.log(key);
+}
+
+// get all values
+for (const value of Object.values(person)) {
+  console.log(value);
+}
+
+// get all keys and value
+for (const [key, value] of Object.entries(person)) {
+  console.log(`Key: ${key}, Value: ${value}`);
+}
