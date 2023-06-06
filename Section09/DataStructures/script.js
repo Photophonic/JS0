@@ -379,3 +379,77 @@ for (const value of Object.values(person)) {
 for (const [key, value] of Object.entries(person)) {
   console.log(`Key: ${key}, Value: ${value}`);
 }
+
+// Video 116 Sets
+// They are a collection of unique values
+
+// need to pass in an iterable, such as an array
+const orderSet = new Set(['Pasta', 'Pizza', 'Pizza', 'Bread', 'Pasta']);
+console.log(orderSet);
+// Set(3) {'Pasta', 'Pizza', 'Bread'}
+// Elements are unique, no order to contents or index
+
+// To get the size, not length
+console.log(orderSet.size);
+
+// to check if an element is in the set, will return true/false
+console.log(orderSet.has('Pizza'));
+console.log(orderSet.has('Food'));
+
+// to add an element to the set
+orderSet.add('Garlic Bread');
+orderSet.add('Garlic Bread');
+
+console.log(orderSet);
+
+// to delete elements
+orderSet.delete('Bread');
+console.log(orderSet);
+
+// there is no way to pull data out of a set
+
+// since Sets are iterables, they can be looped over.
+for (const i of orderSet) {
+  console.log(i);
+}
+
+// main usecase is to remove duplicates from an array
+const staff = ['Waiter', 'Chef', 'Waiter', 'Manaager', 'Chef', 'Waiter'];
+
+// create new set and pass in the staff array
+const staffSet = [...new Set(staff)];
+
+// loop over the new array created from the array set
+for (const [el, i] of staffSet.entries()) {
+  console.log(el, i);
+}
+
+// to count the unique characters in a string
+console.log(new Set('hfguisbfbalifbadsbflagsfug').size);
+
+// video 117 Maps
+
+// the easiest way to create a map is to create an empty one first
+const rest = new Map();
+
+// similar to the add method for set. Add key, then item
+rest.set('name', 'FoodHut');
+rest.set(1, 'FoodHut');
+rest.set(2, 'FoodHut');
+
+console.log(rest);
+
+// Map.set can chain various methods because the updated version is returned
+rest
+  .set('categories', ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'])
+  .set('starterMenu', [
+    'Focaccia',
+    'Bruschetta',
+    'Garlic Bread',
+    'Caprese Salad',
+  ])
+  .set('mainMenu', ['Pizza', 'Pasta', 'Risotto']);
+
+// using the get method will return the coresponding value
+console.log(rest.get('name'));
+console.log(rest.get('categories'));
