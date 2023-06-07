@@ -453,3 +453,59 @@ rest
 // using the get method will return the coresponding value
 console.log(rest.get('name'));
 console.log(rest.get('categories'));
+
+// video 118 maps cont.
+
+// alternate way to create maps with lots of values.
+// you can pass in an array. First position will be the key, second = value
+const question = new Map([
+  ['question', 'What is the programming language?'],
+  [1, 'C'],
+  [2, 'Java'],
+  [3, 'Javascript'],
+  ['correct', 3],
+  [true, 'Correct'],
+  [false, 'Try again'],
+]);
+
+// this is the same array structure when calling Object.entries(something);
+console.log(Object.entries(openingHours));
+
+// to convert objects to maps
+const hoursMap = new Map(Object.entries(openingHours));
+// creates an array of arrays, converting an object into an iterable array
+console.log(hoursMap);
+
+// maps are iterables, therefore the for of loop works with them.
+
+// use map.get(mapvalue) to return something
+console.log(question.get('question'));
+// loop over the map
+for (const [key, value] of question) {
+  // use typeof to only return the questions 1 ~ 3
+  if (typeof key === 'number') {
+    console.log(key, value);
+  }
+}
+
+//to get input for the question
+//const answer = Number(prompt('Your Answer??'));
+const answer = 2;
+
+console.log(answer);
+
+console.log(question.get(answer === question.get('correct')));
+
+// use arrays when you need to store the values in order or need duplicates
+// also when you need to manipulate data
+
+// use sets when dealing with unique values and order does not matter
+
+// objects used to describe data structures that require keys
+// the traditional key/value store
+// very easy to write and access data
+// used when you need functions (methods)
+
+// maps can have keys and any data type
+// use to simply map keys to values
+// cannot use functions
