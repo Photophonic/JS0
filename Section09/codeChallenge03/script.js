@@ -27,27 +27,28 @@ const gameEvents = new Map([
   [92, '🔶 Yellow card'],
 ]);
 
-/*
-// 1.
+//1. Create an array 'events' of the different game events that happened (no duplicates)
+// create a new array named events. The value will be a new array with the spread operator.
+// use the Set(maps.values()) to populate the array with unique entires.
 const events = [...new Set(gameEvents.values())];
 console.log(events);
 
-// 2.
+//2. After the game has finished, is was found that the yellow card from minute 64 was unfair. So remove this event from the game events log.
+// call the map, use .delete and pass in the key to delete it
 gameEvents.delete(64);
 
-// 3.
-console.log(
-  `An event happened, on average, every ${90 / gameEvents.size} minutes`
-);
-const time = [...gameEvents.keys()].pop();
-console.log(time);
-console.log(
-  `An event happened, on average, every ${time / gameEvents.size} minutes`
-);
+//3. Print the following string to the console: "An event happened, on average, every 9 minutes" (keep in mind that a game has 90 minutes)
 
-// 4.
-for (const [min, event] of gameEvents) {
-  const half = min <= 45 ? 'FIRST' : 'SECOND';
-  console.log(`[${half} HALF] ${min}: ${event}`);
+// get the final key from the map gameEvents
+// maps.size will return the lenght of the map object
+// calc time average based on the new variables
+const gameTime = [...gameEvents.keys()];
+const average = gameTime[gameTime.length - 1] / gameEvents.size;
+
+console.log(`An event happened, on average, every ${average} minute`);
+
+//4. Loop over the events and log them to the console, marking whether it's in the first half or second half (after 45 min) of the game, like this:      [FIRST HALF] 17: ⚽️ GOAL
+for (const [key, value] of gameEvents) {
+  const half = key <= 45 ? 'First' : 'Second';
+  console.log(`${half} Half ${key}: ${value}`);
 }
-*/
