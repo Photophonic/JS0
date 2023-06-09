@@ -30,7 +30,14 @@ const game = {
     ],
   ],
   score: '4:0',
-  scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels'],
+  scored: [
+    'Lewandowski',
+    'Gnarby',
+    'Lewandowski',
+    'Hummels',
+    'Hummels',
+    'Hummels',
+  ],
   date: 'Nov 9th, 2037',
   odds: {
     team1: 1.33,
@@ -112,8 +119,9 @@ GOOD LUCK 😀
 // 1.Use for-of loop to loop through the object's array.
 //   Using .entries() will return an array iterator object with
 //   use entries on the array to get all keys and value
+// use destructing to create a new array and assign the item elements
 for (const [i, player] of game.scored.entries()) {
-  console.log(`Goal ${i + 1}: ${player}`);
+  console.log(`Goal ${i + 1}: ${player} entries`);
 }
 
 // 2. get all the values from the object then average them.
@@ -123,10 +131,14 @@ let avg = 0;
 for (const i of odds) avg += i;
 avg /= odds.length;
 
-console.log(avg);
+console.log('avg ', avg);
 
 //3. Pass Object.entries(object name) into the function to get the details
+//  create an array values from the game.odds object for the loop.
+//  NOTE: to get the entries out of the array, use Object.entries(object.name)
+//  this is different from an object's own array using game.scored.entries()
 for (const [key, values] of Object.entries(game.odds)) {
+  // in the object's method x os for draw, this will print draw in the string
   const teamString = key === 'x' ? 'draw' : `victory ${game[key]}`;
   console.log(`Odds of ${teamString} ${values}`);
 }
@@ -136,6 +148,8 @@ for (const [key, values] of Object.entries(game.odds)) {
 //as object properties, and then increase the count as we encounter a new
 //occurence of a certain element
 const scorers = {};
-for (const player of game.scored) {
-  scorers[player] ? scorers[player]++ : (scorers[player] = 1);
+for (const i of game.scored) {
+  scorers[i] ? scorers[i]++ : (scorers[i] = 1);
 }
+
+console.log(Object.entries(scorers));
