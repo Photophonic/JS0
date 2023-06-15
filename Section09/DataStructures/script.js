@@ -509,3 +509,47 @@ console.log(question.get(answer === question.get('correct')));
 // maps can have keys and any data type
 // use to simply map keys to values
 // cannot use functions
+
+// Video 121 Strings p1
+//Strings have many of the same methods and options as arrays
+const airplane = 'TAP Air Portugal';
+const plane = 'A320';
+
+console.log('B737'[0]);
+console.log(airplane.length);
+
+// will return first occurrence of 'r'
+console.log(airplane.indexOf('r'));
+
+// will return last occurrence or 'r'
+console.log(airplane.lastIndexOf('r'));
+
+// can combine with slice to find items based of index
+console.log(airplane.slice(airplane.indexOf('i')));
+// the index from lastIndexOf will tell slice where to start
+console.log(airplane.slice(airplane.lastIndexOf('P')));
+
+// returns Air (end - beginning is how many spaces it will extract)
+console.log(airplane.slice(4, 7));
+
+console.log(airplane.slice(airplane.indexOf('T'), airplane.lastIndexOf('A')));
+console.log(airplane.slice(airplane.indexOf(' '), airplane.lastIndexOf(' ')));
+
+// negative value will cut off value in the slice
+// this pulls only the last two
+console.log(airplane.slice(-2));
+
+// this will start at position 1, not 0, and extract to the last character -1
+console.log(airplane.slice(1, -1));
+
+const checkSeat = function (seat) {
+  // check if seat letter is B or E. This will be a middle seat
+  const row = seat.slice(-1);
+  if (row === 'B' || row === 'E') {
+    console.log('Middle');
+  } else {
+    console.log('not middle');
+  }
+};
+
+checkSeat('11C');
