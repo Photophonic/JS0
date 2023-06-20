@@ -553,3 +553,51 @@ const checkSeat = function (seat) {
 };
 
 checkSeat('11C');
+
+// video 122 more features
+const airline = 'TAP Air Europe';
+
+// Upper & lower transformation
+console.log(airline.toUpperCase(), airline.toLowerCase());
+
+// Fix capitalization
+const passenger = 'jOnAS';
+const passLower = passenger.toLocaleLowerCase();
+// use slice to pull the rest of the string and recombine
+const passUpdated = passLower[0].toUpperCase() + passLower.slice(1);
+console.log(passUpdated);
+
+// can also use a function to simplify
+const fixName = function (name) {
+  const lower = name.toLocaleLowerCase();
+  return lower[0].toUpperCase() + lower.slice(1);
+};
+
+const lowerName = fixName('sTeVe');
+console.log(lowerName);
+
+// compare email
+const email = 'tes1t@gmail.com';
+const loginEmail = ' Test@Gmail.com \n';
+
+const lowerEmail = loginEmail.toLowerCase();
+const trimEmail = lowerEmail.trim();
+
+//to do in one step
+const normalizedEmail = loginEmail.toLowerCase().trim();
+console.log(normalizedEmail);
+
+if (email === normalizedEmail) {
+  console.log('Login');
+} else {
+  console.log('Invalid');
+}
+
+// to replace parts of string
+const price = '288,97';
+const usPrice = price.replace(',', '.');
+console.log(usPrice);
+
+const announcement = 'All passengers come to door 23. Now boarding door 23';
+const annRep = announcement.replace('door', 'gate');
+console.log(annRep);
