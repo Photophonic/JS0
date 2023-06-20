@@ -601,3 +601,63 @@ console.log(usPrice);
 const announcement = 'All passengers come to door 23. Now boarding door 23';
 const annRep = announcement.replace('door', 'gate');
 console.log(annRep);
+
+// split method
+// will split the string into elements of an array based on split parameter
+console.log('a+very+nice+string'.split('+'));
+
+// Can use split with destructuring to assign to variables
+const [firstNames, lastNames] = 'Bob Dole'.split(' ');
+
+// Join method is the opposite of split.
+const newName = ['Mr.', firstNames, lastNames.toUpperCase()].join(' ');
+console.log(newName);
+
+//
+const capitalName1 = function (name) {
+  const names = name.split(' ');
+  const namesUpper = [];
+  for (const i of names) {
+    namesUpper.push(i[0].toUpperCase() + i.slice(1));
+  }
+  console.log(namesUpper.join(' '));
+};
+
+capitalName1('jessica ann smith davis');
+
+// updated version to replace
+const capitalName2 = function (name) {
+  // create split array on a space
+  const names = name.split(' ');
+  // create an empty array to house the modified elements
+  const namesUpper = [];
+  // for of loop on the split array names
+  for (const n of names) {
+    // namesUpper.push(i[0].toUpperCase() + i.slice(1));
+
+    // push into the empty array current itteration of n
+    // and modify the string with replace position/with what of same position
+    // in this case, the first position of each word in each element
+    namesUpper.push(n.replace(n[0], n[0].toUpperCase()));
+  }
+  // use the join method to recombin the new elements from the new array
+  console.log(namesUpper.join(' '));
+};
+
+capitalName2('jessica sue sally davis');
+
+// padding, behaves just like LPAD/RPAD
+const message = 'Go to gate 23';
+console.log(message.padStart(20, '*').padEnd(40, '+'));
+
+const maskCard = function (number) {
+  // cheater way to make the number a string.
+  const str = number + '';
+  // select the last four numbers from the string
+  const lastFour = str.slice(-4);
+  // return the variable lastFour with a padding of *
+  // padding is derived from the length of the initial str variable.
+  return lastFour.padStart(str.length, '*');
+};
+
+console.log(maskCard(8465627542856272));
