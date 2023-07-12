@@ -51,41 +51,85 @@ const createBooking = function (
   bookings.push(booking);
 };
 
-//call funcation to push the information to the array
+//call function to push the information to the array
 //createBooking('LH123', 5);
 
 //cannot skip parameters, but can manually set to undefined will load defaults
 //createBooking('2J374', undefined, 88);
 
 //video 129 Passing Arguments
-const flight = 'LH2';
-const passenger = {
-  name: 'Bod Dole',
-  passport: 83277181,
+const flight = 'LH234';
+const person = {
+  name: 'Bob Dole',
+  passport: 74612652,
 };
 
 const checkIn = function (flightNum, passenger) {
-  flightNum = 'LH999';
   passenger.name = 'Mr. ' + passenger.name;
 
-  if (passenger.passport === 83277181) {
-    console.log('Check In ' + flightNum);
+  if (passenger.passport === 74612652) {
+    console.log('Welcome aboard ' + passenger.name);
   } else {
-    console.log('Wrong Passport');
+    console.log('Nice Try.');
   }
 };
 
-checkIn(flight, passenger);
+checkIn(flight, person);
 console.log(flight);
-console.log(passenger);
+console.log(person);
 
 const newPassport = function (person) {
   person.passport = Math.trunc(Math.random() * 100000000);
 };
 
-newPassport(passenger);
+newPassport(person);
+console.log(person.passport);
 
-console.log(passenger);
+checkIn(flight, person);
 
-checkIn(flight, passenger);
-console.log(passenger);
+//video 130 & 131 higher order functions
+/*
+A higher order function is on that receives a function as an argument, that 
+returns a new function as a result, or both. There are no actual first class
+functions, this is a concept.
+*/
+
+//function takes in a string and removes spaces, converts to lowercase.
+const oneWord = function (str) {
+  return str.replace(/ /g, '').toLowerCase();
+};
+
+// returns bigbagbash
+//console.log(oneWord('Big Bag Bash'));
+
+//function to upper first word
+const upperFirstWord = function (str) {
+  //destructure the string based on space and assign to array elements
+  const [first, ...others] = str.split(' ');
+  //return the modifed first element, then join with the rest.
+  return [first.toUpperCase(), ...others].join(' ');
+};
+
+// returns BIG bag bash
+//console.log(upperFirstWord('big bag bash'));
+
+const transform = function (str, fn) {
+  console.log(str);
+  //pass in the string into our passed in function to do work.
+  console.log(`Transformed string: ${fn(str)}`);
+  //this will show the method on the fn function that did the work.
+  console.log(`Transformed by: ${fn.name}`);
+};
+
+//example on how to call this function
+transform('This is a string.', upperFirstWord);
+
+//JS uses callback functions a lot
+const high5 = function () {
+  console.log('high five!');
+};
+
+document.body.addEventListener('click', high5);
+['bob', 'dole', 'bag'].forEach(high5);
+
+//
