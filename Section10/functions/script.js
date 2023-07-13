@@ -132,4 +132,51 @@ const high5 = function () {
 document.body.addEventListener('click', high5);
 ['bob', 'dole', 'bag'].forEach(high5);
 
-//
+// video 132 - returning functions
+const greet = function (greeting) {
+  return function (name) {
+    console.log(`${greeting} ${name}`);
+  };
+};
+
+const greeting = greet('Hey');
+greeting('Bob');
+
+greet('Hello')('Dole');
+
+//Whaaa?????
+const greetArr = greeting => name => console.log(`${greeting} ${name}`);
+
+//more on this topic later in the course
+greetArr('Morning')('Joe');
+
+// video 133 call and apply method
+//create a new object
+const lufthansa = {
+  airline: 'Lufthansa',
+  iataCode: 'LH',
+  bookings: [],
+  //use ES6 enhanced function to create message
+  book(fightNumber, name) {
+    console.log(
+      `${name} books a seat on ${this.airline} flight ${this.iataCode}${fightNumber}`
+    );
+    //push the new flight to the object's array bookings
+    this.bookings.push({ flight: `${this.iataCode}${fightNumber}`, name });
+  },
+};
+
+const book = lufthansa.book;
+
+lufthansa.book(239, 'Bob Dole');
+lufthansa.book(635, 'Peet Sax');
+console.log(lufthansa.bookings);
+
+const erowings = {
+  airline: 'Eurowings',
+  iataCode: 'EW',
+  bookings: [],
+  book,
+};
+
+erowings.book(847, 'Sam Smith');
